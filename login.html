@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VishalMart | Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>VishalMart</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Login</h2>
+    <form id="login-form">
+      <label>Email:</label>
+      <input type="email" id="email" required />
+      <label>Password:</label>
+      <input type="password" id="password" required />
+      <button type="submit">Login</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      // Simple demo validation: password must be at least 4 chars
+      if (!email.includes('@')) return alert('Enter a valid email');
+      if (password.length < 4) return alert('Password must be at least 4 characters');
+
+      // Save logged-in user (demo only)
+      localStorage.setItem('vm_user', email);
+      alert('Login successful!');
+      window.location.href = 'products.html';
+    });
+  </script>
+</body>
+</html>

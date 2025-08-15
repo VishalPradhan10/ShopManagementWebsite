@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VishalMart | Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>VishalMart</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" id="auth-link">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Welcome to VishalMart</h2>
+      <p>Your one-stop shop for tech gadgets and accessories.</p>
+      <a href="products.html" class="btn">Browse Products</a>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h3>Fast Delivery</h3>
+        <p>Reliable delivery across India.</p>
+      </div>
+      <div class="feature">
+        <h3>Secure Payments</h3>
+        <p>Test payment flow (simulation) — no real money taken.</p>
+      </div>
+      <div class="feature">
+        <h3>Customer Support</h3>
+        <p>Contact us for any product queries.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Show cart count and login state
+    const cart = JSON.parse(localStorage.getItem('vm_cart') || '[]');
+    document.getElementById('cart-count').textContent = cart.length;
+    const user = localStorage.getItem('vm_user');
+    const authLink = document.getElementById('auth-link');
+    if (user) authLink.textContent = 'Logout';
+    authLink.addEventListener('click', (e) => {
+      if (user) {
+        e.preventDefault();
+        localStorage.removeItem('vm_user');
+        location.reload();
+      }
+    });
+  </script>
+</body>
+</html>
